@@ -17,6 +17,9 @@ var request = require("request");
 //Requires moment npm package
 var moment= require("moment");
 
+//Requires file system package
+var fs = require("fs");
+
 //Assigns user input to variables
 var nodeArgs = process.argv;
 var command = nodeArgs[2];
@@ -27,7 +30,7 @@ case "concert-this":
   concertThis();
   break;
 
-case "spotify-this":
+case "spotify-this-song":
   spotifyThis();
   break;
 
@@ -152,7 +155,31 @@ function movieThis() {
 }
 
 function doWhatItSays() {
-
+  //grabs data from text file
+  fs.readFile("random.txt", "utf8", function(error, data) {
+    if (error) {
+      return console.log(error);
+    }
+    //splits data into array at commas
+    var dataArr = data.split(",");
+    //pushes function name and search term to nodeArgs at correct indices
+    nodeArgs.splice(2);
+    nodeArgs.push(dataArr[0], dataArr[1]);
+    //calls function
+    switch (dataArr[0]) {
+      case "concert-this":
+        concertThis();
+        break;
+      
+      case "spotify-this-song":
+        spotifyThis();
+        break;
+      
+      case "movie-this":
+        movieThis();
+        break;
+      }
+  });
 }
 
 
