@@ -14,6 +14,9 @@ var spotify = new Spotify(keys.spotify);
 //Requires request npm package
 var request = require("request");
 
+//Requires moment npm package
+var moment= require("moment");
+
 //Assigns user input to variables
 var nodeArgs = process.argv;
 var command = nodeArgs[2];
@@ -67,9 +70,9 @@ function concertThis() {
       }
       else {
         for (i=0; i < JSON.parse(body).length; i++) {
-          console.log("\nThe venue name is: " + JSON.parse(body)[i].venue.name);
-          console.log("The venue location is: " + JSON.parse(body)[i].venue.city + ", " + JSON.parse(body)[i].venue.region);
-          console.log("The concert date is: " + JSON.parse(body)[i].datetime);
+          console.log("\nVenue name: " + JSON.parse(body)[i].venue.name);
+          console.log("Venue location: " + JSON.parse(body)[i].venue.city + ", " + JSON.parse(body)[i].venue.region);
+          console.log("Concert date: " + moment(JSON.parse(body)[i].datetime).calendar());
           // console.log(JSON.parse(body));
         }
       }
@@ -78,29 +81,33 @@ function concertThis() {
 }
 
 function spotifyThis() {
-  //creates empty variable for song name
-  var songName = "";
-  //loops through node arguments to assemble the title into a string
-  for (var i = 3; i < nodeArgs.length; i++) {
-    if (i > 3 && i < nodeArgs.length) {
-      songName = songName + " " + nodeArgs[i];
-    }
-    else {
-      songName += nodeArgs[i];
-    }
-  }
-  //Requires user input of song title
+  //If no arguments input by user
   if (nodeArgs[3] === undefined) {
-    console.log("\nPlease include a song title!");
-    return;
+    var songName = "the sign ace of base";
+  }
+  else {
+    //creates empty variable for song name
+    var songName = "";
+    //loops through node arguments to assemble the title into a string
+    for (var i = 3; i < nodeArgs.length; i++) {
+      if (i > 3 && i < nodeArgs.length) {
+        songName = songName + " " + nodeArgs[i];
+      }
+      else {
+        songName += nodeArgs[i];
+      }
+    }
   }
   //requests and prints song info
-  spotify.search({ type: 'track', query: songName }, function(err, data) {
+  spotify.search({ type: 'track', query: songName, limit: 1 }, function(err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
    
-  console.log(data.tracks); 
+  console.log("\nArtist: " + data.tracks.items[0].artists[0].name); 
+  console.log("Song Title: " + data.tracks.items[0].name); 
+  console.log("Spotify Preview Link: " + data.tracks.items[0].preview_url); 
+  console.log("Album Title: " + data.tracks.items[0].album.name); 
   });
 }
 
