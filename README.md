@@ -1,6 +1,9 @@
 # LIRI (Language Interpretation and Recognition Interface)
 ## Zeke Graves Node.js Homework
 
+Screen capture video of LIRI app functions:
+https://drive.google.com/open?id=1X4N2nGo-hMW-SJpVOK-XIQPkXlcZwy02
+
 LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and Recognition Interface, LIRI is a _Language_ Interpretation and Recognition Interface. LIRI will be a command line node app that takes in parameters and gives you back data. The app recognizes four commands:
 
 1. `node liri.js concert-this <artist/band name here>`
@@ -44,5 +47,5 @@ This app uses the following tools:
 Future development of the app will add:
   * Writing the user input and data received to a text file for reference
   * Additional fixes for errors created by inconsistencies in the data objects returned from APIs
-  
+
 
