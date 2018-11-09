@@ -136,19 +136,19 @@ function movieThis() {
   //requests and prints movie info
   request(queryUrl, function(error, response, body) {
     if (!error && response.statusCode === 200) {
-      console.log("\nThe movie's title is: " + JSON.parse(body).Title);
-      console.log("The movie was released in: " + JSON.parse(body).Year);
-      console.log("The movie's IMDB rating is: " + JSON.parse(body).imdbRating);
+      console.log("\nMovie title: " + JSON.parse(body).Title);
+      console.log("Year released: " + JSON.parse(body).Year);
+      console.log("IMDB rating: " + JSON.parse(body).imdbRating);
       if (JSON.parse(body).Ratings == "" || JSON.parse(body).Ratings[1] === undefined) {
         console.log("This movie doesn't have a Rotten Tomatoes rating");
       }
       else {
-        console.log("The movie's Rotten Tomatoes rating is: " + JSON.parse(body).Ratings[1].Value);
+        console.log("Rotten Tomatoes rating: " + JSON.parse(body).Ratings[1].Value);
       }
-      console.log("The movie was produced in: " + JSON.parse(body).Country);
-      console.log("The movie's language is: " + JSON.parse(body).Language);
-      console.log("The movie's plot: " + JSON.parse(body).Plot);
-      console.log("The movie's actors are: " + JSON.parse(body).Actors);
+      console.log("Country: " + JSON.parse(body).Country);
+      console.log("Language: " + JSON.parse(body).Language);
+      console.log("Plot synopsis: " + JSON.parse(body).Plot);
+      console.log("Actors: " + JSON.parse(body).Actors);
       // console.log(JSON.parse(body));
     }
   });
