@@ -35,7 +35,6 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
 4. `node liri.js do-what-it-says`
    * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
 
-
 This app uses the following tools:
   * Node.js for Javascript runtime environment
   * Javascript for app logic
@@ -47,5 +46,7 @@ This app uses the following tools:
 Future development of the app will add:
   * Writing the user input and data received to a text file for reference
   * Additional fixes for errors created by inconsistencies in the data objects returned from APIs
+
+Installation: You must have Node.js installed to run this app from the command line using the commands listing above. Install npm dependencies before running. 
 
 
