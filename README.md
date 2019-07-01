@@ -1,5 +1,5 @@
 # LIRI (Language Interpretation and Recognition Interface)
-## Zeke Graves Node.js Homework
+## UNC Coding Bootcamp Node.js Homework  11-9-2018
 
 Screen capture video of LIRI app functions:
 https://drive.google.com/open?id=1X4N2nGo-hMW-SJpVOK-XIQPkXlcZwy02
